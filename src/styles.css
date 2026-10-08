@@ -192,3 +192,5 @@ button, a { touch-action: manipulation; }
  .form-row { grid-template-columns: 1fr; } .gallery-image { aspect-ratio: 4/5; object-position: 70% center; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+.dialog-overlay { background: var(--overlay); }
