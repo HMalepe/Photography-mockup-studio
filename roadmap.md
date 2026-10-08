@@ -1,3 +1,3 @@
 - [x] Review the uploaded cinematic kit.
 - [x] Create three switchable wedding photographer concepts.
-- [ ] Verify concept switching, story gallery, and mock inquiry flow.
+- [x] Verify concept switching, story gallery, and mock inquiry flow.
