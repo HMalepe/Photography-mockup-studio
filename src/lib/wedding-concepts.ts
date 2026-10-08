@@ -1,0 +1,11 @@
+import romantic from "@/assets/romantic-wedding.jpg";
+import editorial from "@/assets/editorial-wedding.jpg";
+import adventure from "@/assets/adventure-wedding.jpg";
+
+export const concepts = [
+  { id: "romantic", name: "The Romantic", number: "01", image: romantic, brand: "Éloise", descriptor: "WEDDING STORIES, BEAUTIFULLY TOLD", heading: ["For the moments", "that become", "forever."], accentWord: "forever.", description: "Honest emotion. Quiet beauty. A little bit of magic.\nWedding photography for the beautifully in love.", location: "TUSCANY, ITALY", couple: "Isabella & James", statement: "Not just how it looked. How it felt.", about: "The fleeting glances. The hands held a little tighter. The joy you couldn’t possibly put into words. I photograph the things that make your story yours — naturally, thoughtfully, and with my whole heart.", category: "FINE ART & DOCUMENTARY" },
+  { id: "editorial", name: "The Editorial", number: "02", image: editorial, brand: "Éloise", descriptor: "AN EDITORIAL EYE. AN HONEST HEART.", heading: ["A love story.", "A work of", "art."], accentWord: "art.", description: "Modern romance, captured without compromise.\nConsidered images. Completely unposed moments.", location: "PARIS, FRANCE", couple: "Camille & Alexandre", statement: "A little fashion. A lot of feeling.", about: "Beautiful composition means nothing without a little soul. My approach brings an editorial eye to real connection — creating photographs that belong on your walls, and feel unmistakably like you.", category: "MODERN & EDITORIAL" },
+  { id: "adventure", name: "The Adventurer", number: "03", image: adventure, brand: "Éloise", descriptor: "BIG FEELINGS. WILD PLACES.", heading: ["Love, without", "limits.", "Always."], accentWord: "Always.", description: "For the wildly in love and the roads less travelled.\nYour story, wherever it takes us.", location: "DOLOMITES, ITALY", couple: "Olivia & Noah", statement: "The best stories take the scenic route.", about: "Mountaintop vows. Barefoot first dances. A day that feels like the two of you, and no one else. I follow the adventure and the feeling — making space for the unexpected moments you’ll never want to forget.", category: "DESTINATION & ELOPEMENT" },
+] as const;
+
+export type WeddingConcept = typeof concepts[number];
