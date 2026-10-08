@@ -1,16 +1,18 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef, useState, type FormEvent } from "react";
-import { ArrowDown, ArrowLeft, ArrowRight, Check, Menu, Sparkles, X } from "lucide-react";
+import { ArrowDown, ArrowRight, Check, Menu, Sparkles, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { concepts } from "@/lib/wedding-concepts";
 import { useCinematicMotion } from "@/components/cinematic-motion";
+import { ImageChapters } from "@/components/image-chapters";
+import { PhotoReel } from "@/components/photo-reel";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
-    { title: "Éloise — Three Cinematic Wedding Photography Concepts" },
-    { name: "description", content: "Explore three wedding photography concepts: romantic fine art, modern editorial, and adventurous destination stories." },
-    { property: "og:title", content: "Éloise — Wedding Photography Concepts" },
+    { title: "Éloise Photography — The Wedding Edit" },
+    { name: "description", content: "Wedding stories by Éloise. Explore a photography world of weddings, portraits, lifestyle, and editorial work." },
+    { property: "og:title", content: "Éloise Photography — Wedding Stories" },
     { property: "og:description", content: "Three distinct visions of wedding photography. Honest emotion, editorial elegance, and wild romance." },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
@@ -26,7 +28,6 @@ function Index() {
   const [gallery, setGallery] = useState<number | null>(null);
   const scope = useRef<HTMLDivElement>(null);
   const concept = concepts[active] ?? concepts[0];
-  const galleryStory = gallery === null ? null : concepts[gallery];
   useCinematicMotion(scope, concept.id);
 
   const switchConcept = (index: number) => {
@@ -41,7 +42,7 @@ function Index() {
   return (
     <>
       <div className="mockup-bar">
-        <div className="studio-mark"><Sparkles strokeWidth={1.4} /><strong>The wedding edit</strong><span>Three ways to tell a love story</span></div>
+        <div className="studio-mark"><Sparkles strokeWidth={1.4} /><strong>The photography edit</strong><span>One eye. Three perspectives.</span></div>
         <div className="concept-switch" role="group" aria-label="Photography concepts">
           {concepts.map((item, index) => <Button key={item.id} variant="concept" aria-pressed={active === index} onClick={() => switchConcept(index)}><span>{item.number}</span>{item.name}</Button>)}
         </div>
@@ -54,6 +55,7 @@ function Index() {
           <header className="photographer-nav">
             <a className="wordmark" href="#" aria-label="Éloise home">éloise<small>PHOTOGRAPHY</small></a>
             <nav className={`nav-links ${menu ? "is-open" : ""}`} aria-label="Main navigation">
+              <Button variant="navigation" asChild><Link to="/portfolio">Portfolio</Link></Button>
               {[ ["The stories", "stories"], ["My approach", "approach"], ["The experience", "experience"] ].map(([label, id]) => <Button key={id} variant="navigation" asChild><a href={`#${id}`} onClick={() => setMenu(false)}>{label}</a></Button>)}
               {menu && <Button variant="navigation" onClick={openInquiry}>Let’s make memories <ArrowRight /></Button>}
             </nav>
@@ -77,13 +79,12 @@ function Index() {
           <div><div className="section-label"><span />THE HEART BEHIND THE LENS</div><h2>{concept.statement.split(" ").map((word, index) => <span className="statement-word" key={`${word}-${index}`}>{word}</span>)}</h2></div>
           <div className="statement-copy scroll-reveal"><p>{concept.about}</p><Button variant="link" className="text-link" asChild><a href="#experience">A little about my approach <ArrowRight /></a></Button></div>
         </section>
+        <ImageChapters key={`chapters-${concept.id}`} concept={concept} />
         <section id="stories" className="story-section"><div className="section-inner">
           <div className="section-heading scroll-reveal"><div><div className="section-label"><span />LOVE, IN ALL ITS FORMS</div><h2>A few love stories.</h2></div><Button variant="link" className="text-link" onClick={() => setGallery(active)}>View the collection <ArrowRight /></Button></div>
-          <div className="story-grid">{concepts.map((story, index) => <article className="story-card scroll-reveal" key={story.id}>
-            <div className="story-image"><img className="story-photo" src={story.image} alt={`${story.couple} wedding in ${story.location.toLowerCase()}`} loading="lazy" width={1920} height={1088} /><Button variant="navigation" aria-label={`Open ${story.couple}'s wedding gallery`} onClick={() => setGallery(index)} /></div>
-            <h3>{story.couple}<ArrowRight strokeWidth={1} /></h3><p>{story.location} · {story.category}</p>
-          </article>)}</div>
+          <PhotoReel key={`reel-${concept.id}`} startIndex={active} onOpen={setGallery} />
         </div></section>
+        <section className="beyond-weddings section-inner scroll-reveal"><div className="section-label"><span />THERE’S MORE TO THE STORY</div><h2>Love is just<br /><em>the beginning.</em></h2><div><p>Portraits with personality. Life as it unfolds. Editorial stories with a point of view. The same eye, a different chapter.</p><Button variant="link" className="text-link" asChild><Link to="/portfolio">Explore all photography <ArrowRight /></Link></Button></div></section>
         <section id="experience" className="section-inner experience">
           <div className="section-heading scroll-reveal"><div><div className="section-label"><span />THOUGHTFUL, FROM THE VERY BEGINNING</div><h2>Your day. Your way.</h2></div></div>
           <div className="process-grid">{[
@@ -93,20 +94,20 @@ function Index() {
           ].map(([number, title, text]) => <div className="process-step scroll-reveal" key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></div>)}</div>
         </section>
         <section className="contact-section"><div className="scroll-reveal"><div className="eyebrow">THE NEXT STORY COULD BE YOURS</div><h2>Let’s make something<br /><em>worth remembering.</em></h2><Button variant="cinematic" onClick={openInquiry}>Tell me your story <ArrowRight /></Button></div></section>
-        <footer className="footer"><a className="wordmark" href="#">éloise</a><span>Wedding photography · Concept collection</span><span>Made with feeling.</span></footer>
+        <footer className="footer"><a className="wordmark" href="#">éloise</a><span>Weddings · Portraits · Lifestyle · Editorial</span><span>Made with feeling.</span></footer>
       </div>
-      <Dialog open={inquiry} onOpenChange={setInquiry}><DialogContent className="inquiry-dialog"><DialogTitle className="dialog-heading">Your story starts here.</DialogTitle><DialogDescription>Tell me a little about the day you’re dreaming of.</DialogDescription>
+      <Dialog open={inquiry} onOpenChange={setInquiry}><DialogContent className="inquiry-dialog"><DialogTitle className="dialog-heading">Your story starts here.</DialogTitle><DialogDescription>Tell me a little about what you’d like to create.</DialogDescription>
         {submitted ? <div className="success-panel"><Check size={32} strokeWidth={1.5} /><h3>Beautiful. Let’s imagine it.</h3><p>Your sample inquiry is complete.<br />This is a mockup — no message has been sent.</p><Button onClick={() => setInquiry(false)}>Back to the stories <ArrowRight /></Button></div> : <form className="inquiry-form" onSubmit={submitInquiry}>
-          <label>Your names<input name="names" autoComplete="name" placeholder="You & your favourite person" required /></label>
+          <label>Your name(s)<input name="names" autoComplete="name" placeholder="Your name or your team" required /></label>
           <label>Email address<input type="email" name="email" autoComplete="email" placeholder="you@example.com" required /></label>
-          <div className="form-row"><label>Wedding date<input type="date" name="date" required /></label><label>Location<input name="location" placeholder="Somewhere beautiful" required /></label></div>
+          <label>Photography type<select name="type" defaultValue="Weddings"><option>Weddings</option><option>Portraits</option><option>Lifestyle</option><option>Editorial</option></select></label>
+          <div className="form-row"><label>Preferred date<input type="date" name="date" required /></label><label>Location<input name="location" placeholder="Somewhere beautiful" required /></label></div>
           <label>A little about your plans<textarea name="message" rows={3} placeholder="The place, the people, the feeling…" /></label>
           <Button variant="cinematic" type="submit">Preview your inquiry <ArrowRight /></Button><p className="demo-note">Concept preview only. Your details are not stored or sent.</p>
         </form>}
       </DialogContent></Dialog>
-      <Dialog open={gallery !== null} onOpenChange={open => { if (!open) setGallery(null); }}><DialogContent className="gallery-dialog"><DialogTitle className="dialog-heading">{galleryStory?.couple ?? "Wedding stories"}</DialogTitle><DialogDescription>{galleryStory?.location} · A sample wedding story</DialogDescription>
-        {galleryStory && <img className="gallery-image" src={galleryStory.image} alt={`${galleryStory.couple}'s wedding portrait`} width={1920} height={1088} />}
-        <div className="gallery-controls"><Button variant="outline" size="icon" aria-label="Previous story" onClick={() => setGallery(previous => ((previous ?? 0) + concepts.length - 1) % concepts.length)}><ArrowLeft /></Button><p>{String((gallery ?? 0) + 1).padStart(2, "0")} / 03 · THE WEDDING COLLECTION</p><Button variant="outline" size="icon" aria-label="Next story" onClick={() => setGallery(previous => ((previous ?? 0) + 1) % concepts.length)}><ArrowRight /></Button></div>
+      <Dialog open={gallery !== null} onOpenChange={open => { if (!open) setGallery(null); }}><DialogContent className="gallery-dialog"><DialogTitle className="dialog-heading">Through the lens.</DialogTitle><DialogDescription>Weddings, portraits, life & editorial.</DialogDescription>
+        {gallery !== null && <PhotoReel key={gallery} startIndex={gallery} modal />}
       </DialogContent></Dialog>
     </>
   );

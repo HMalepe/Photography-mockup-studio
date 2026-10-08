@@ -194,3 +194,72 @@ button, a { touch-action: manipulation; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
 
 .dialog-overlay { background: var(--overlay); }
+
+/* Cinematic photography: scoped stages, native drag reels, and portfolio. */
+.photographer-site { background: var(--background); color: var(--foreground); }
+.image-chapters { overflow: hidden; background: var(--foreground); color: var(--on-image); }
+.chapter-stage { position: relative; }
+.chapter-panel { position: relative; height: 82svh; min-height: 500px; overflow: hidden; background: var(--foreground); }
+.chapter-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.chapter-shade { position: absolute; inset: 0; background: linear-gradient(0deg,var(--image-shade-strong),var(--image-shade-clear) 65%); }
+.chapter-text { position: absolute; left: 8%; bottom: 16%; right: 8%; }
+.chapter-text h2 { font-family: var(--display-font); font-size: 82px; font-weight: 400; line-height: 1.05; margin: 20px 0; }
+.chapter-text p { font-size: 13px; color: var(--on-image-muted); }
+.chapter-stage.is-cinematic { height: 100svh; min-height: 580px; overflow: hidden; }
+.is-cinematic .chapter-panel { position: absolute; inset: 0; height: 100%; min-height: 0; transform-origin: center; }
+.chapter-rail { position: absolute; bottom: 40px; left: 8%; right: 8%; display: flex; align-items: center; gap: 24px; z-index: 5; font-size: 8px; letter-spacing: 1.5px; }
+.chapter-rail > div { flex: 1; height: 1px; background: var(--on-image-muted); }
+.chapter-progress { display: block; width: 100%; height: 2px; background: var(--on-image); transform-origin: left; }
+.photo-reel { min-width: 0; }
+.reel-viewport { overflow: hidden; touch-action: pan-y pinch-zoom; cursor: grab; }
+.reel-viewport:active { cursor: grabbing; }
+.reel-track { display: flex; gap: 26px; }
+.reel-slide { flex: 0 0 62%; min-width: 0; }
+.reel-image-wrap { aspect-ratio: 4/3; position: relative; overflow: hidden; background: var(--muted); }
+.reel-image-wrap img { width: 100%; height: 100%; object-fit: cover; user-select: none; pointer-events: none; transform: scale(1.06); transition: transform 1.2s var(--motion-out), opacity .8s; opacity: .65; }
+.is-selected .reel-image-wrap img { transform: scale(1); opacity: 1; }
+.reel-open { position: absolute; right: 18px; bottom: 18px; width: 42px; height: 42px; border: 1px solid var(--on-image-muted); background: var(--image-shade); }
+.reel-caption { display: flex; justify-content: space-between; align-items: baseline; gap: 15px; padding: 18px 0; }
+.reel-caption h3, .reel-caption h2 { font-family: var(--display-font); font-size: 30px; font-weight: 400; margin: 0; }
+.reel-caption span { font-size: 9px; color: var(--muted-foreground); text-transform: uppercase; }
+.reel-controls { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; gap: 24px; }
+.reel-pagination { display: flex; align-items: center; gap: 16px; font-size: 10px; width: 240px; }
+.reel-progress { height: 1px; flex: 1; background: var(--border); }
+.reel-progress i { display: block; height: 2px; width: 100%; background: var(--primary); transform-origin: left; transition: transform .6s var(--motion-out); }
+.reel-arrows { display: flex; gap: 10px; }
+.photo-reel-modal .reel-slide { flex-basis: 100%; }
+.photo-reel-modal .reel-image-wrap { aspect-ratio: 16/10; max-height: 55svh; }
+.photo-reel-modal .reel-image-wrap img { object-fit: contain; }
+.gallery-dialog { max-height: 94svh; overflow-y: auto; }
+.beyond-weddings { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 90px; }
+.beyond-weddings .section-label { grid-column: 1/-1; }
+.beyond-weddings h2 { font-family: var(--display-font); font-weight: 400; font-size: 68px; line-height: 1; margin: 25px 0 0; }
+.beyond-weddings h2 em { color: var(--primary); }
+.beyond-weddings > div:last-child { padding-top: 30px; }
+.beyond-weddings p { font-size: 13px; line-height: 2; color: var(--muted-foreground); max-width: 360px; margin-bottom: 24px; }
+.inquiry-form select { border: 1px solid var(--border); background: var(--card); color: var(--foreground); padding: 11px 12px; border-radius: 3px; font: inherit; }
+.portfolio-nav { padding: 40px 5.3%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+.portfolio-intro { padding-bottom: 40px; }
+.portfolio-intro h1 { font-family: var(--display-font); font-size: 85px; font-weight: 400; line-height: 1; margin: 30px 0; }
+.portfolio-intro h1 em { color: var(--primary); }
+.portfolio-intro p { color: var(--muted-foreground); font-size: 13px; }
+.portfolio-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 40px; }
+.portfolio-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 60px 35px; padding-top: 0; }
+.portfolio-item:nth-child(even) { padding-top: 75px; }
+.portfolio-image { aspect-ratio: 4/5; overflow: hidden; position: relative; }
+.portfolio-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--motion-out); }
+.portfolio-image:hover img { transform: scale(1.05); }
+.portfolio-image .navigation-button { position: absolute; inset: 0; width: 100%; height: 100%; justify-content: flex-end; align-items: end; padding: 25px; }
+.portfolio-item p { font-size: 11px; color: var(--muted-foreground); margin: 0; }
+@media (max-width: 1000px) { .chapter-text h2 { font-size: 66px; } .beyond-weddings { gap: 20px 40px; } .beyond-weddings h2 { font-size: 56px; } }
+@media (max-width: 700px) {
+ .chapter-panel { height: 74svh; min-height: 480px; } .chapter-text { bottom: 15%; left: 25px; right: 25px; } .chapter-text h2 { font-size: 47px; } .chapter-text .eyebrow { font-size: 7px; } .chapter-text p { font-size: 11px; }
+ .chapter-rail { display: none; } .chapter-photo { object-position: 66% center; }
+ .reel-slide { flex-basis: 87%; } .reel-track { gap: 15px; } .reel-image-wrap { aspect-ratio: 4/5; } .reel-caption h3,.reel-caption h2 { font-size: 25px; } .reel-caption span { font-size: 7px; }
+ .reel-pagination { width: 160px; } .reel-controls { gap: 12px; } .reel-open { width: 34px; height: 34px; right: 12px; bottom: 12px; }
+ .beyond-weddings { grid-template-columns: 1fr; gap: 15px; } .beyond-weddings h2 { font-size: 53px; } .beyond-weddings > div:last-child { padding-top: 0; }
+ .portfolio-intro h1 { font-size: 54px; } .portfolio-grid { grid-template-columns: 1fr; gap: 38px; } .portfolio-item:nth-child(even) { padding-top: 0; } .portfolio-nav { padding: 30px 25px; } .portfolio-nav .text-link { font-size: 10px; }
+ .portfolio-filters { gap: 4px; } .portfolio-filters .concept-button { flex: initial; }
+ .photo-reel-modal .reel-image-wrap { aspect-ratio: 4/5; }
+}
+@media (prefers-reduced-motion: reduce) { .reel-image-wrap img { transform: none; opacity: 1; } }
