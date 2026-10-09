@@ -263,3 +263,184 @@ button, a { touch-action: manipulation; }
  .photo-reel-modal .reel-image-wrap { aspect-ratio: 4/5; }
 }
 @media (prefers-reduced-motion: reduce) { .reel-image-wrap img { transform: none; opacity: 1; } }
+
+/* Separate compositions: a print-led editorial and an outdoor field journal. */
+.photographer-site[data-concept="editorial"] {
+ --background: oklch(.985 0 0); --foreground: oklch(.18 0 0); --primary: oklch(.53 .22 28); --secondary: oklch(.94 0 0); --muted-foreground: oklch(.48 0 0); --border: oklch(.78 0 0); --accent: oklch(.94 .03 28);
+}
+.editorial-website { padding: 0 4.5%; }
+.edition-header { height: 86px; display: flex; align-items: center; gap: 36px; border-bottom: 1px solid var(--foreground); }
+.edition-logo { font-size: 25px; font-weight: 600; text-decoration: none; color: var(--foreground); }
+.edition-kicker { font-size: 8px; line-height: 1.6; }
+.edition-nav { display: flex; margin-left: auto; gap: 26px; }
+.edition-nav .text-primary { color: var(--foreground); font-size: 10px; padding: 0; }
+.alternative-menu { display: none; }
+.edition-masthead { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 22px 0 12px; }
+.edition-masthead h1 { font-family: "Bodoni Moda", Georgia, serif; font-size: 150px; line-height: .95; font-weight: 400; margin: 0; }
+.edition-masthead > span { font-size: 11px; line-height: 1.6; text-align: right; }
+.edition-rule { border-top: 1px solid var(--foreground); border-bottom: 1px solid var(--foreground); display: flex; justify-content: space-between; gap: 16px; font-size: 8px; padding: 10px 0; }
+.editorial-cover { position: relative; margin-top: 18px; height: min(480px, 46svh); min-height: 270px; overflow: hidden; background: var(--secondary); }
+.editorial-cover-photo { width: 100%; height: 100%; object-fit: cover; object-position: center 53%; }
+.edition-cover-caption { position: absolute; bottom: 20px; left: 24px; right: 24px; display: flex; align-items: center; gap: 24px; color: var(--on-image); }
+.edition-cover-caption > span { font-size: 8px; }
+.edition-cover-caption h2 { font-family: var(--display-font); font-weight: 400; font-size: 30px; margin: 0; text-shadow: 0 1px 8px var(--image-shade-strong); }
+.edition-cover-caption .navigation-button { margin-left: auto; border: 1px solid var(--on-image); border-radius: 50%; height: 42px; width: 42px; background: var(--image-shade); }
+.edition-subline { display: flex; align-items: center; gap: 30px; padding: 22px 0 30px; border-bottom: 1px solid var(--foreground); }
+.edition-subline p { font-family: var(--display-font); font-size: 29px; line-height: 1.1; margin: 0; }
+.edition-subline > span { margin-left: auto; font-size: 8px; line-height: 1.7; }
+.edition-subline a { color: var(--primary); }
+.edition-work { padding: 75px 0; }
+.edition-section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; margin-bottom: 32px; }
+.edition-section-title > span, .edition-manifesto > span, .edition-footer > span { font-size: 9px; }
+.edition-section-title h2 { font-family: var(--display-font); font-weight: 400; font-size: 44px; margin: 0 auto 0 0; }
+.edition-section-title .text-primary, .edition-manifesto .text-primary, .edition-diptych .text-primary { font-size: 11px; padding: 0; }
+.editorial-website .reel-slide { flex-basis: 40%; }
+.editorial-website .reel-image-wrap { aspect-ratio: 3/4; }
+.editorial-website .reel-caption h3 { font-family: var(--font-sans); font-size: 17px; }
+.edition-perspective { display: grid; grid-template-columns: 1.1fr 1fr; gap: 9%; align-items: center; padding: 75px 0; border-top: 1px solid var(--foreground); }
+.edition-manifesto h2 { font-family: var(--display-font); font-size: 66px; font-weight: 400; line-height: 1; margin: 28px 0; }
+.edition-manifesto h2 em { color: var(--primary); }
+.edition-manifesto p { font-size: 13px; line-height: 1.9; max-width: 360px; margin-bottom: 28px; }
+.edition-portrait { margin: 0; }
+.edition-portrait img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+.edition-portrait figcaption, .edition-diptych figcaption { font-size: 8px; margin-top: 12px; }
+.edition-diptych { display: grid; grid-template-columns: 1.4fr 1fr; gap: 8%; padding: 50px 0 85px; align-items: center; }
+.edition-diptych figure { margin: 0; }
+.edition-diptych img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.edition-diptych > div > span { font-size: 8px; line-height: 1.8; }
+.edition-diptych h2 { font-family: var(--display-font); font-size: 43px; font-weight: 400; line-height: 1.1; }
+.edition-diptych p { white-space: pre-line; font-size: 12px; line-height: 1.8; }
+.edition-footer { border-top: 2px solid var(--foreground); padding: 36px 0 25px; }
+.edition-footer > .text-primary { display: flex; justify-content: space-between; align-items: end; width: 100%; height: auto; padding: 30px 0 50px; text-align: left; white-space: normal; font-family: var(--display-font); font-size: 76px; font-weight: 400; line-height: 1; color: var(--foreground); flex-wrap: wrap; gap: 5px 22px; }
+.edition-footer > .text-primary em { color: var(--primary); }
+.edition-footer > .text-primary svg { width: 55px; height: 55px; }
+.edition-footer > div { border-top: 1px solid var(--foreground); padding-top: 20px; display: flex; justify-content: space-between; gap: 20px; font-size: 8px; }
+.edition-footer a { color: var(--foreground); text-decoration: none; }
+.photographer-site[data-concept="adventure"] {
+ --background: oklch(.97 .008 130); --foreground: oklch(.24 .027 155); --primary: oklch(.38 .07 151); --secondary: oklch(.9 .034 115); --muted-foreground: oklch(.48 .025 145); --border: oklch(.77 .027 135); --wild-accent: oklch(.9 .19 113); --display-font: "DM Sans", sans-serif;
+}
+.adventure-cover { height: min(860px, calc(100svh - 105px)); min-height: 560px; position: relative; overflow: hidden; color: var(--on-image); }
+.adventure-cover-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.adventure-scrim { position: absolute; inset: 0; background: linear-gradient(0deg,var(--image-shade-strong),var(--image-shade-clear) 65%), linear-gradient(180deg,var(--image-shade),var(--image-shade-clear) 25%); }
+.wild-header { position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; padding: 32px 4.5%; gap: 25px; }
+.wild-logo { display: inline-flex; gap: 12px; align-items: center; font-size: 20px; font-weight: 600; text-decoration: none; color: inherit; line-height: 1.1; }
+.wild-logo > svg { width: 34px; height: 34px; }
+.wild-logo small { display: block; font-size: 7px; margin-top: 7px; font-weight: 400; }
+.wild-nav { display: flex; gap: 30px; }
+.wild-nav .navigation-button { font-size: 10px; }
+.wild-coordinate { position: absolute; top: 130px; right: 4.5%; font-size: 8px; line-height: 1.8; text-align: right; }
+.wild-title { position: absolute; bottom: 105px; left: 5%; right: 5%; }
+.wild-title > span { display: block; font-size: 9px; margin-bottom: 18px; }
+.wild-title h1 { font-family: var(--display-font); font-size: 108px; line-height: .95; font-weight: 600; margin: 0 0 25px; }
+.wild-title .cinematic-button { background: var(--wild-accent); color: var(--foreground); }
+.wild-bottom { position: absolute; bottom: 0; left: 4.5%; right: 4.5%; border-top: 1px solid var(--on-image-muted); padding: 20px 0; display: flex; align-items: center; justify-content: space-between; gap: 20px; font-size: 8px; }
+.wild-bottom .navigation-button { font-size: 10px; }
+.wild-ticker { display: flex; justify-content: space-around; align-items: center; gap: 25px; padding: 22px 4.5%; background: var(--wild-accent); color: var(--foreground); font-size: 10px; font-weight: 600; overflow: hidden; }
+.wild-ticker > svg { width: 20px; flex-shrink: 0; }
+.field-notes { max-width: 1280px; margin: auto; padding: 110px 7%; display: grid; grid-template-columns: 1fr 1fr; gap: 30px 12%; align-items: center; }
+.field-label { font-size: 9px; font-weight: 500; }
+.field-intro h2 { font-size: 63px; font-weight: 500; line-height: 1.02; margin: 28px 0; }
+.field-intro h2 em { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500; }
+.field-intro p { font-size: 13px; line-height: 1.9; color: var(--muted-foreground); max-width: 365px; margin-bottom: 24px; }
+.field-intro .text-primary { padding: 0; font-size: 11px; }
+.field-photo { margin: 0; transform: rotate(3deg); }
+.field-photo img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+.field-photo figcaption { display: flex; justify-content: space-between; gap: 12px; padding-top: 12px; font-size: 8px; }
+.field-footnote { display: flex; gap: 30px; align-items: baseline; border-top: 1px solid var(--border); padding-top: 24px; }
+.field-footnote > span { font-size: 8px; }
+.field-footnote p { font-size: 12px; line-height: 1.7; margin: 0; }
+.adventure-website .chapter-text h2 { font-size: 72px; font-weight: 600; text-transform: uppercase; max-width: 750px; }
+.adventure-website .chapter-text .eyebrow { color: var(--wild-accent); }
+.wild-collection { background: var(--secondary); padding: 95px 5%; }
+.wild-collection-heading { position: relative; max-width: 1150px; margin: 0 auto 45px; }
+.wild-collection-heading h2 { font-size: 62px; line-height: 1; font-weight: 500; margin: 25px 0; }
+.wild-collection-heading .text-primary { position: absolute; bottom: 0; right: 0; font-size: 11px; }
+.wild-collection .photo-reel { max-width: 1150px; margin: auto; }
+.wild-collection .reel-slide { flex-basis: 74%; }
+.wild-collection .reel-image-wrap { aspect-ratio: 16/9; }
+.wild-collection .reel-caption h3 { font-family: var(--font-sans); font-size: 22px; font-weight: 500; }
+.wild-invitation { padding: 90px 5%; text-align: center; background: var(--foreground); color: var(--on-image); }
+.wild-invitation > div > svg { display: block; margin: 0 auto 20px; width: 38px; height: 38px; color: var(--wild-accent); }
+.wild-invitation span { font-size: 9px; }
+.wild-invitation h2 { font-size: 88px; line-height: 1; font-weight: 600; margin: 28px 0 18px; }
+.wild-invitation h2 em { font-style: normal; color: var(--wild-accent); }
+.wild-invitation p { font-size: 14px; margin-bottom: 30px; }
+.wild-invitation .cinematic-button { background: var(--wild-accent); }
+.wild-footer { display: flex; align-items: center; justify-content: space-between; gap: 25px; padding: 30px 4.5%; font-size: 9px; }
+.wild-footer a { text-decoration: none; color: var(--foreground); }
+@media (max-width: 1000px) {
+ .edition-masthead h1 { font-size: 120px; }
+ .edition-manifesto h2 { font-size: 52px; }
+ .edition-section-title { flex-wrap: wrap; }
+ .edition-footer > .text-primary { font-size: 60px; }
+ .wild-title h1 { font-size: 88px; }
+ .field-notes { gap: 30px 8%; padding: 85px 5%; }
+ .field-intro h2 { font-size: 52px; }
+}
+@media (max-width: 700px) {
+ .alternative-menu { display: inline-flex; margin-left: auto; }
+ .edition-header { height: 65px; gap: 20px; position: relative; z-index: 3; }
+ .edition-logo { font-size: 20px; }
+ .edition-kicker { font-size: 6px; }
+ .edition-nav { display: none; position: absolute; right: 0; left: 0; top: 65px; background: var(--background); border-bottom: 1px solid var(--foreground); padding: 24px; flex-direction: column; align-items: start; }
+ .edition-nav.is-open { display: flex; }
+ .edition-masthead { padding-top: 22px; gap: 12px; }
+ .edition-masthead h1 { font-size: 73px; }
+ .edition-masthead > span { font-size: 6px; }
+ .edition-rule { font-size: 6px; gap: 8px; }
+ .edition-rule span:nth-child(2) { display: none; }
+ .editorial-cover { height: 43svh; min-height: 270px; }
+ .editorial-cover-photo { object-position: 65% center; }
+ .edition-cover-caption { left: 14px; right: 14px; bottom: 16px; gap: 10px; }
+ .edition-cover-caption > span { display: none; }
+ .edition-cover-caption h2 { font-size: 25px; }
+ .edition-subline { padding: 20px 0; gap: 15px; }
+ .edition-subline p { font-size: 22px; }
+ .edition-subline > span { font-size: 6px; }
+ .edition-work { padding: 52px 0; }
+ .edition-section-title { gap: 16px; }
+ .edition-section-title > span { width: 100%; font-size: 8px; }
+ .edition-section-title h2 { font-size: 31px; }
+ .edition-section-title .text-primary { font-size: 8px; }
+ .editorial-website .reel-slide { flex-basis: 80%; }
+ .edition-perspective { grid-template-columns: 1fr; gap: 35px; padding: 50px 0; }
+ .edition-manifesto h2 { font-size: 50px; }
+ .edition-portrait { width: 80%; margin-left: auto; }
+ .edition-diptych { grid-template-columns: 1fr; gap: 28px; padding: 20px 0 60px; }
+ .edition-diptych h2 { font-size: 41px; margin: 20px 0; }
+ .edition-footer > .text-primary { font-size: 43px; padding-bottom: 32px; display: block; }
+ .edition-footer > .text-primary svg { display: inline; margin-left: 12px; width: 30px; height: 30px; }
+ .edition-footer > div { flex-wrap: wrap; font-size: 7px; gap: 15px; }
+ .edition-footer > div > span { width: 100%; }
+ .adventure-cover { height: calc(100svh - 150px); min-height: 530px; }
+ .adventure-cover-photo { object-position: 61% center; }
+ .wild-header { padding: 24px 6%; z-index: 3; }
+ .wild-logo { font-size: 18px; }
+ .wild-nav { display: none; position: absolute; top: 85px; left: 6%; right: 6%; background: var(--foreground); padding: 24px; flex-direction: column; align-items: start; }
+ .wild-nav.is-open { display: flex; }
+ .wild-coordinate { top: 110px; right: 6%; font-size: 7px; }
+ .wild-title { bottom: 105px; left: 6%; right: 6%; }
+ .wild-title h1 { font-size: 49px; }
+ .wild-title > span { font-size: 8px; }
+ .wild-bottom { left: 6%; right: 6%; font-size: 6px; gap: 10px; }
+ .wild-bottom > span:last-child { display: none; }
+ .wild-bottom .navigation-button { font-size: 9px; }
+ .wild-ticker { gap: 15px; font-size: 7px; padding: 20px 5%; }
+ .wild-ticker > span:last-child, .wild-ticker > svg:last-of-type { display: none; }
+ .field-notes { grid-template-columns: 1fr; padding: 60px 7%; gap: 40px; }
+ .field-intro h2 { font-size: 51px; }
+ .field-photo { width: 85%; margin-left: auto; }
+ .field-footnote { margin-top: 5px; }
+ .adventure-website .chapter-text h2 { font-size: 42px; }
+ .wild-collection { padding: 60px 6%; }
+ .wild-collection-heading h2 { font-size: 47px; }
+ .wild-collection-heading .text-primary { position: static; padding: 0; }
+ .wild-collection .field-label { font-size: 7px; }
+ .wild-collection .reel-slide { flex-basis: 90%; }
+ .wild-collection .reel-image-wrap { aspect-ratio: 4/5; }
+ .wild-collection .reel-caption h3 { font-size: 19px; }
+ .wild-invitation { padding: 65px 6%; }
+ .wild-invitation h2 { font-size: 56px; }
+ .wild-footer { flex-wrap: wrap; padding: 30px 6%; font-size: 7px; gap: 20px; }
+ .wild-footer > span { order: 3; width: 100%; }
+}

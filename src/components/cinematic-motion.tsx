@@ -22,6 +22,20 @@ export function useCinematicMotion(scope: RefObject<HTMLDivElement | null>, conc
     gsap.to(".hero-content", { y: -60, opacity: .1, ease: "none", scrollTrigger: { trigger: ".photographer-hero", start: "top top", end: "bottom top", scrub: true } });
     gsap.fromTo(".statement-word", { opacity: .2 }, { opacity: 1, stagger: .12, ease: "none", scrollTrigger: { trigger: ".statement", start: "top 80%", end: "center 45%", scrub: true } });
    }
+   const editorialCover = root.querySelector(".editorial-cover");
+   if (editorialCover) {
+    gsap.from(".edition-masthead h1", { y: 35, opacity: 0, duration: 1, ease: "power3.out" });
+    gsap.fromTo(".editorial-cover-photo", { clipPath: "inset(0 50% 0 50%)", scale: 1.08 }, { clipPath: "inset(0 0% 0 0%)", scale: 1, duration: 1.4, ease: "power3.inOut" });
+    gsap.to(".editorial-cover-photo", { yPercent: 10, ease: "none", scrollTrigger: { trigger: editorialCover, start: "top top", end: "bottom top", scrub: true } });
+   }
+   const adventureCover = root.querySelector(".adventure-cover");
+   if (adventureCover) {
+    gsap.fromTo(".adventure-cover-photo", { scale: 1.15 }, { scale: 1, duration: 2.4, ease: "power2.out" });
+    gsap.from(".wild-title", { y: 60, opacity: 0, duration: 1.2, delay: .2, ease: "power3.out" });
+    gsap.to(".adventure-cover-photo", { yPercent: 15, ease: "none", scrollTrigger: { trigger: adventureCover, start: "top top", end: "bottom top", scrub: true } });
+    const fieldPhoto = root.querySelector(".field-photo");
+    if (fieldPhoto) gsap.fromTo(fieldPhoto, { rotation: -4 }, { rotation: 3, ease: "none", scrollTrigger: { trigger: fieldPhoto, start: "top bottom", end: "bottom top", scrub: true } });
+   }
    gsap.utils.toArray<HTMLElement>(".scroll-reveal").forEach(element => gsap.from(element, { y: 45, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: element, start: "top 92%", once: true } }));
    const stage = root.querySelector<HTMLElement>(".chapter-stage");
    if (stage) {
