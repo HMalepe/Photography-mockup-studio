@@ -7,6 +7,7 @@ import { concepts } from "@/lib/wedding-concepts";
 import { useCinematicMotion } from "@/components/cinematic-motion";
 import { ImageChapters } from "@/components/image-chapters";
 import { PhotoReel } from "@/components/photo-reel";
+import { EditorialWebsite, AdventureWebsite } from "@/components/alternative-concepts";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -49,6 +50,7 @@ function Index() {
         <div className="live-indicator"><i />CONCEPT PREVIEW</div>
       </div>
       <div ref={scope} className="photographer-site" data-concept={concept.id}>
+        {concept.id === "editorial" ? <EditorialWebsite concept={concept} menu={menu} onMenu={() => setMenu(!menu)} onCloseMenu={() => setMenu(false)} onInquiry={openInquiry} onOpen={setGallery} /> : concept.id === "adventure" ? <AdventureWebsite concept={concept} menu={menu} onMenu={() => setMenu(!menu)} onCloseMenu={() => setMenu(false)} onInquiry={openInquiry} onOpen={setGallery} /> : <>
         <section className="photographer-hero" key={concept.id}>
           <img className="hero-photo" src={concept.image} alt={`${concept.couple}, a wedding couple in ${concept.location.toLowerCase()}`} width={1920} height={1088} fetchPriority="high" />
           <div className="hero-shade" />
@@ -95,6 +97,7 @@ function Index() {
         </section>
         <section className="contact-section"><div className="scroll-reveal"><div className="eyebrow">THE NEXT STORY COULD BE YOURS</div><h2>Let’s make something<br /><em>worth remembering.</em></h2><Button variant="cinematic" onClick={openInquiry}>Tell me your story <ArrowRight /></Button></div></section>
         <footer className="footer"><a className="wordmark" href="#">éloise</a><span>Weddings · Portraits · Lifestyle · Editorial</span><span>Made with feeling.</span></footer>
+        </>}
       </div>
       <Dialog open={inquiry} onOpenChange={setInquiry}><DialogContent className="inquiry-dialog"><DialogTitle className="dialog-heading">Your story starts here.</DialogTitle><DialogDescription>Tell me a little about what you’d like to create.</DialogDescription>
         {submitted ? <div className="success-panel"><Check size={32} strokeWidth={1.5} /><h3>Beautiful. Let’s imagine it.</h3><p>Your sample inquiry is complete.<br />This is a mockup — no message has been sent.</p><Button onClick={() => setInquiry(false)}>Back to the stories <ArrowRight /></Button></div> : <form className="inquiry-form" onSubmit={submitInquiry}>
