@@ -14,3 +14,4 @@
 - Inquiry forms are explicitly demonstration-only until a delivery service is connected, so mockups never imply a real booking was sent.
 - Keep all photography categories in a shared browser-safe collection and use the same Embla reel on pages and photo viewers, so swipes and navigation behave consistently.
 - Use desktop-only GSAP chapter pinning with unpinned mobile and reduced-motion fallbacks, so visual storytelling does not obstruct normal browsing.
+- Render concept-specific page compositions while sharing content, photo viewers, and inquiry state, so visual comparison never becomes a single reskinned template.
