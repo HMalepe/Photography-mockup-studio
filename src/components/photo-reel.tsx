@@ -7,6 +7,14 @@ import { photographs } from "@/lib/photography";
 export function PhotoReel({ onOpen, startIndex = 0, modal = false }: { onOpen?: (index: number) => void; startIndex?: number; modal?: boolean }) {
   const [ref, api] = useEmblaCarousel({ loop: true, align: "center", startIndex, duration: 35 });
   const [selected, setSelected] = useState(startIndex);
+  useEffect(() => {
+    if (!api) return;
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => api.reInit({ duration: preference.matches ? 0 : 35 });
+    update();
+    preference.addEventListener("change", update);
+    return () => preference.removeEventListener("change", update);
+  }, [api]);
   const onSelect = useCallback(() => { if (api) setSelected(api.selectedScrollSnap()); }, [api]);
   useEffect(() => { if (!api) return; onSelect(); api.on("select", onSelect); return () => { api.off("select", onSelect); }; }, [api, onSelect]);
   return <div className={`photo-reel ${modal ? "photo-reel-modal" : ""}`} role="region" aria-label={modal ? "Photo viewer" : "Photography collection"} aria-roledescription="carousel" onKeyDown={event => { if (event.key === "ArrowRight") api?.scrollNext(); if (event.key === "ArrowLeft") api?.scrollPrev(); }}>

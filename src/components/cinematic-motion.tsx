@@ -37,8 +37,10 @@ export function useCinematicMotion(scope: RefObject<HTMLDivElement | null>, conc
        const direction = concept === "editorial" ? { yPercent: 0, xPercent: 0, rotation: 0 } : { yPercent: 0, rotation: 0 };
        gsap.set(panel, concept === "editorial" ? { yPercent: 0, xPercent: 110 } : concept === "adventure" ? { yPercent: 110, rotation: 6 } : { yPercent: 110 });
        timeline.to(panel, { ...direction, duration: .8, ease: "power2.inOut" }, index);
-       timeline.to(panels[index - 1], { scale: .91, opacity: .45, duration: .8 }, index);
-       timeline.from(panel.querySelector(".chapter-text"), { y: 50, opacity: 0, duration: .5 }, index + .3);
+       const previousPanel = panels[index - 1];
+       const text = panel.querySelector(".chapter-text");
+       if (previousPanel) timeline.to(previousPanel, { scale: .91, opacity: .45, duration: .8 }, index);
+       if (text) timeline.from(text, { y: 50, opacity: 0, duration: .5 }, index + .3);
       }
      });
      timeline.fromTo(".chapter-progress", { scaleX: 0 }, { scaleX: 1, duration: timeline.duration(), ease: "none" }, 0);

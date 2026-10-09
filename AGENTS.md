@@ -12,3 +12,5 @@
 - Keep wedding concept content in a shared browser-safe data module, so the three mockups remain consistent and easy to compare.
 - Keep cinematic effects in a scoped, cleanup-safe hook with reduced-motion support, so switching concepts never leaves duplicate animations.
 - Inquiry forms are explicitly demonstration-only until a delivery service is connected, so mockups never imply a real booking was sent.
+- Keep all photography categories in a shared browser-safe collection and use the same Embla reel on pages and photo viewers, so swipes and navigation behave consistently.
+- Use desktop-only GSAP chapter pinning with unpinned mobile and reduced-motion fallbacks, so visual storytelling does not obstruct normal browsing.
