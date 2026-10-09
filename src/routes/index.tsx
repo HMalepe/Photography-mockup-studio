@@ -81,7 +81,7 @@ function Index() {
         </section>
         <ImageChapters key={`chapters-${concept.id}`} concept={concept} />
         <section id="stories" className="story-section"><div className="section-inner">
-          <div className="section-heading scroll-reveal"><div><div className="section-label"><span />LOVE, IN ALL ITS FORMS</div><h2>A few love stories.</h2></div><Button variant="link" className="text-link" onClick={() => setGallery(active)}>View the collection <ArrowRight /></Button></div>
+          <div className="section-heading scroll-reveal"><div><div className="section-label"><span />THROUGH THE LENS</div><h2>Stories, in every form.</h2></div><Button variant="link" className="text-link" onClick={() => setGallery(active)}>View the collection <ArrowRight /></Button></div>
           <PhotoReel key={`reel-${concept.id}`} startIndex={active} onOpen={setGallery} />
         </div></section>
         <section className="beyond-weddings section-inner scroll-reveal"><div className="section-label"><span />THERE’S MORE TO THE STORY</div><h2>Love is just<br /><em>the beginning.</em></h2><div><p>Portraits with personality. Life as it unfolds. Editorial stories with a point of view. The same eye, a different chapter.</p><Button variant="link" className="text-link" asChild><Link to="/portfolio">Explore all photography <ArrowRight /></Link></Button></div></section>

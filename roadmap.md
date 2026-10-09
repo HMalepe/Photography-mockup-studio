@@ -1,6 +1,6 @@
 - [x] Review the uploaded cinematic kit.
 - [x] Create three switchable wedding photographer concepts.
 - [x] Verify concept switching, story gallery, and mock inquiry flow.
-- [ ] Add distinct cinematic image sequences and swipe interactions to all three concepts.
-- [ ] Broaden the photography identity and add a non-wedding portfolio.
-- [ ] Verify scroll sequences, swipes, portfolio navigation, and reduced-motion behavior.
+- [x] Add distinct cinematic image sequences and swipe interactions to all three concepts.
+- [x] Broaden the photography identity and add a non-wedding portfolio.
+- [x] Verify scroll sequences, swipes, portfolio navigation, and reduced-motion behavior.
