@@ -4,5 +4,5 @@
 - [x] Add distinct cinematic image sequences and swipe interactions to all three concepts.
 - [x] Broaden the photography identity and add a non-wedding portfolio.
 - [x] Verify scroll sequences, swipes, portfolio navigation, and reduced-motion behavior.
-- [ ] Give all three concepts distinct website structures and visual styles.
-- [ ] Verify each concept's navigation, motion, swipe gallery, and inquiry.
+- [x] Give all three concepts distinct website structures and visual styles.
+- [x] Verify each concept's navigation, motion, swipe gallery, and inquiry.

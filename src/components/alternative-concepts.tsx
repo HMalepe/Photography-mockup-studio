@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowDown, ArrowRight, ArrowUpRight, Compass, Menu, X } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Compass, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PhotoReel } from "@/components/photo-reel";
 import { ImageChapters } from "@/components/image-chapters";
@@ -54,7 +54,7 @@ export function AdventureWebsite({ concept, menu, onMenu, onCloseMenu, onInquiry
       <header className="wild-header"><Link to="/" className="wild-logo"><Compass strokeWidth={1.3} /><span>ÉLOISE<small>OUT THERE. WITH YOU.</small></span></Link><nav aria-label="Main navigation" className={`wild-nav ${menu ? "is-open" : ""}`}><Button variant="navigation" asChild><a href="#field-notes" onClick={onCloseMenu}>Field notes</a></Button><Button variant="navigation" asChild><Link to="/portfolio">The photographs</Link></Button><Button variant="navigation" onClick={onInquiry}>Let’s wander <ArrowUpRight /></Button></nav><Button variant="navigation" size="icon" className="alternative-menu" aria-label={menu ? "Close menu" : "Open menu"} aria-expanded={menu} onClick={onMenu}>{menu ? <X /> : <Menu />}</Button></header>
       <div className="wild-coordinate">46°29′ N / 11°51′ E<br />DOLOMITES, ITALY</div>
       <div className="wild-title"><span>FOR THE WILDLY IN LOVE</span><h1>LOVE.<br />UNCHARTED.</h1><Button variant="cinematic" asChild><a href="#field-notes">Follow the feeling <ArrowDown /></a></Button></div>
-      <div className="wild-bottom"><span>SMALL HUMANS. BIG FEELINGS.</span><Button variant="navigation" onClick={() => onOpen(2)}>{concept.couple} <ArrowUpRight /></Button><span>SCROLL TO ROAM ↓</span></div>
+      <div className="wild-bottom"><span>SMALL HUMANS. BIG FEELINGS.</span><Button variant="navigation" aria-label={`View ${concept.couple}'s story`} onClick={() => onOpen(2)}>{concept.couple} <ArrowUpRight /></Button><span>SCROLL TO ROAM ↓</span></div>
     </section>
     <div className="wild-ticker"><span>NO MAP REQUIRED.</span><Compass /><span>JUST YOU. JUST US. JUST THIS.</span><Compass /><span>TAKE THE LONG WAY HOME.</span></div>
     <section id="field-notes" className="field-notes">
