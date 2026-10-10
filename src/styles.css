@@ -413,7 +413,7 @@ button, a { touch-action: manipulation; }
  .edition-footer > div { flex-wrap: wrap; font-size: 7px; gap: 15px; }
  .edition-footer > div > span { width: 100%; }
  .adventure-cover { height: calc(100svh - 150px); min-height: 530px; }
- .adventure-cover-photo { object-position: 61% center; }
+ .adventure-cover-photo { object-position: 78% center; }
  .wild-header { padding: 24px 6%; z-index: 3; }
  .wild-logo { font-size: 18px; }
  .wild-nav { display: none; position: absolute; top: 85px; left: 6%; right: 6%; background: var(--foreground); padding: 24px; flex-direction: column; align-items: start; }
